@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chúc Mừng 20/10</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            overflow: hidden;
+            background: linear-gradient(135deg, #1a4d2e 0%, #2d5a3d 50%, #3d6b4d 100%);
+            font-family: 'Arial', sans-serif;
+        }
+
+        .container {
+            position: relative;
+            width: 100vw;
+            height: 100vh;
+        }
+
+        .tulip {
+            position: absolute;
+            width: 50px;
+            height: 50px;
+            opacity: 0;
+            transform: scale(0);
+            animation: tulipBloom 1.5s ease-out forwards;
+        }
+
+        .tulip-flower {
+            position: relative;
+            width: 100%;
+            height: 100%;
+        }
+
+        /* Vue du dessus - forme de tulipe complète */
+        .tulip-shape {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+        }
+
+        /* Pétales extérieurs formant la tulipe */
+        .outer-petal {
+            position: absolute;
+            width: 30px;
+            height: 35px;
+            border-radius: 50% 50% 50% 10%;
+        }
+
+        .outer-petal:nth-child(1) {
+            background: radial-gradient(circle at 40% 40%, #ff91b3, #ff1744);
+            top: -5px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .outer-petal:nth-child(2) {
+            background: radial-gradient(circle at 40% 40%, #ffa0c0, #ff4569);
+            top: 10px;
+            right: -5px;
+            transform: rotate(72deg);
+        }
+
+        .outer-petal:nth-child(3) {
+            background: radial-gradient(circle at 40% 40%, #ffb0d0, #ff6b8a);
+            bottom: 2px;
+            right: 5px;
+            transform: rotate(144deg);
+        }
+
+        .outer-petal:nth-child(4) {
+            background: radial-gradient(circle at 40% 40%, #ff8aaa, #ff2955);
+            bottom: 2px;
+            left: 5px;
+            transform: rotate(216deg);
+        }
+
+        .outer-petal:nth-child(5) {
+            background: radial-gradient(circle at 40% 40%, #ff7aa0, #ff3060);
+            top: 10px;
+            left: -5px;
+            transform: rotate(288deg);
+        }
+
+        .center-circle {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 18px;
+            height: 18px;
+            background: radial-gradient(circle, #fff9c4, #ffd700);
+            border-radius: 50%;
+            box-shadow: 0 0 8px rgba(255, 215, 0, 0.8), inset 0 0 5px rgba(255, 165, 0, 0.5);
+        }
+.message a {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 12px 30px;
+    border-radius: 50px;
+    background: linear-gradient(135deg, #ff91b3, #ff1744);
+    color: #fff;
+    font-size: 1.4em;
+    font-weight: 600;
+    text-decoration: none;
+    box-shadow: 0 5px 15px rgba(255, 20, 68, 0.4);
+    transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
+}
+.message a:hover {
+    transform: translateY(-3px) scale(1.05);
+    box-shadow: 0 8px 20px rgba(255, 20, 68, 0.6);
+    background: linear-gradient(135deg, #ff1744, #ff91b3);
+}
+
+        .message {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            color: white;
+            z-index: 1000;
+            opacity: 0;
+            animation: fadeInMessage 2s ease-out 4s forwards;
+            background: rgba(0, 0, 0, 0.4);
+            padding: 50px 70px;
+            border-radius: 25px;
+            backdrop-filter: blur(15px);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+        }
+
+        .message h1 {
+            font-size: 4.5em;
+            text-shadow: 4px 4px 8px rgba(0,0,0,0.6);
+            margin-bottom: 25px;
+            background: linear-gradient(45deg, #fff, #ffd700, #ff69b4, #fff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: shimmer 3s infinite;
+            background-size: 200% 200%;
+        }
+
+        .message p {
+            font-size: 1.6em;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.6);
+            line-height: 1.6;
+        }
+
+        @keyframes tulipBloom {
+            0% {
+                opacity: 0;
+                transform: scale(0) rotate(0deg);
+            }
+            50% {
+                opacity: 1;
+                transform: scale(1.2) rotate(180deg);
+            }
+            100% {
+                opacity: 1;
+                transform: scale(1) rotate(360deg);
+            }
+        }
+
+        @keyframes fadeInMessage {
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes shimmer {
+            0%, 100% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+        }
+
+        .tulip:hover {
+            animation: float 0.8s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: scale(1) translateY(0);
+            }
+            50% {
+                transform: scale(1.15) translateY(-8px);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container" id="garden"></div>
+    <div class="message">
+        <h1>Chúc Mừng Eiu 20/10</h1>
+        <p>Chúc em luôn xinh đẹp, hạnh phúc và luôn yêu đời hí hí ! 🌷💕</p>
+        <div><a href="main3.html">Tiếp tục</a></div>
+    </div>
+
+    <script>
+        const garden = document.getElementById('garden');
+        const width = window.innerWidth;
+        const height = window.innerHeight;
+        const centerX = width / 2;
+        const centerY = height / 2;
+
+        function createTulip(x, y, delay) {
+            const tulip = document.createElement('div');
+            tulip.className = 'tulip';
+            tulip.style.left = (x - 25) + 'px';
+            tulip.style.top = (y - 25) + 'px';
+            tulip.style.animationDelay = delay + 's';
+
+            const flower = document.createElement('div');
+            flower.className = 'tulip-flower';
+
+            const shape = document.createElement('div');
+            shape.className = 'tulip-shape';
+
+            // Créer 5 pétales pour former la tulipe vue du dessus
+            for (let i = 0; i < 5; i++) {
+                const petal = document.createElement('div');
+                petal.className = 'outer-petal';
+                shape.appendChild(petal);
+            }
+
+            const center = document.createElement('div');
+            center.className = 'center-circle';
+            shape.appendChild(center);
+
+            flower.appendChild(shape);
+            tulip.appendChild(flower);
+            garden.appendChild(tulip);
+        }
+
+        // Fonction pour calculer la distance depuis le centre
+        function getDistanceFromCenter(x, y) {
+            const dx = x - centerX;
+            const dy = y - centerY;
+            return Math.sqrt(dx * dx + dy * dy);
+        }
+
+        // Créer les tulipes depuis les 4 côtés vers le centre
+        const numRows = 18;
+        const numCols = 32;
+
+        // Créer une grille de tulipes sur tout l'écran
+        const tulips = [];
+        const spacingX = width / numCols;
+        const spacingY = height / numRows;
+        
+        for (let row = 0; row < numRows; row++) {
+            for (let col = 0; col < numCols; col++) {
+                const x = col * spacingX + spacingX / 2;
+                const y = row * spacingY + spacingY / 2;
+                const distance = getDistanceFromCenter(x, y);
+                tulips.push({ x, y, distance });
+            }
+        }
+
+        // Trier par distance (les plus éloignées d'abord)
+        tulips.sort((a, b) => b.distance - a.distance);
+
+        // Créer les tulipes avec délai basé sur la distance
+        tulips.forEach((tulip, index) => {
+            const delay = index * 0.02;
+            createTulip(tulip.x, tulip.y, delay);
+        });
+    </script>
+</body>
+</html>

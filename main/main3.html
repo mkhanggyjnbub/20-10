@@ -1,0 +1,175 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Chúc mừng 20/10</title>
+<style>
+:root{
+  --bg:#fff6fb;
+  --accent:#ff6fb3;
+  --accent-dark:#ff3b8f;
+  --accent-blue:#6fcfff;
+  --accent-blue-dark:#4ab9f5;
+  --button:#ff7ab1;
+  --text:#4b3a45;
+}
+body,html{
+  height:100%;
+  margin:0;
+  font-family:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial;
+  background: var(--bg);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  overflow:hidden;
+}
+
+.card{
+  width:90%;
+  max-width:500px;
+  padding:24px 28px;
+  text-align:center;
+  position:relative;
+}
+
+h1{margin:0 0 12px;font-size:26px;color:var(--text);}
+p.lead{margin:0 0 22px;color:#6b5460;}
+
+.btn{
+  display:inline-block;padding:14px 22px;border-radius:999px;border:0;font-weight:600;font-size:16px;cursor:pointer;
+  background:linear-gradient(180deg,var(--button),var(--accent-dark));color:white;box-shadow:0 6px 18px rgba(255,107,160,0.28);
+  transition:transform .18s ease, box-shadow .18s ease;
+}
+.btn:hover{
+  transform:translateY(-2px);
+  box-shadow:0 8px 24px rgba(255,107,160,0.35);
+}
+.btn:active{transform:translateY(2px) scale(.995)}
+
+.stage{margin-top:28px;min-height:200px;display:flex;align-items:center;justify-content:center;position:relative}
+
+.panel{
+  position:relative;
+  padding:20px 16px 20px 50px; /* padding-left cho trái tim */
+  background: #fff0f6;
+  border-radius:12px;
+  box-shadow:0 4px 12px rgba(0,0,0,0.08);
+  opacity:0;
+  transform:scale(0.8);
+  transition:all 0.5s cubic-bezier(.2,.9,.3,1);
+}
+
+.panel.show{
+  opacity:1;
+  transform:scale(1);
+}
+
+.panel::before{
+  content:'❤️';
+  position:absolute;
+  left:16px;
+  top:16px;
+  font-size:24px;
+  animation:beat 1.2s infinite;
+}
+
+.panel p{
+  margin:0;
+  font-size:15px;
+  line-height:1.5;
+  color: #4b3a45;
+}
+
+.panel a {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 12px 28px;
+    border-radius: 50px;
+    background: linear-gradient(135deg, var(--accent), var(--accent-dark));
+    color: #fff;
+    font-weight: 600;
+    font-size: 16px;
+    text-decoration: none;
+    box-shadow: 0 5px 15px rgba(255,107,160,0.4);
+    transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
+}
+
+.panel a:hover {
+    transform: translateY(-2px) scale(1.05);
+    box-shadow: 0 8px 20px rgba(255,107,160,0.6);
+    background: linear-gradient(135deg, var(--accent-dark), var(--accent));
+}
+
+/* Nhịp tim cho trái tim góc trái */
+@keyframes beat{
+  0%,100%{transform:scale(1);}
+  10%,30%{transform:scale(1.2);}
+  20%,40%{transform:scale(1);}
+}
+
+/* Falling hearts */
+.falling-heart{
+  position:fixed;
+  top:-40px;
+  font-size:24px;
+  animation:fall 5s linear forwards;
+  opacity:0.9;
+  z-index:1;
+  pointer-events:none;
+}
+@keyframes fall{
+  0%{transform:translateY(0) rotate(0deg);opacity:1;}
+  100%{transform:translateY(110vh) rotate(360deg);opacity:0;}
+}
+</style>
+</head>
+<body>
+<div class="card">
+  <h1>Chúc mừng ngày 20/10 💝</h1>
+
+  <button id="openBtn" class="btn">Dám mở ko 🎁</button>
+
+  <div class="stage" id="heartArea">
+    <div class="panel" id="panel">
+      <p>Chúc em – cô gái tuyệt vời của anh – luôn xinh đẹp, rạng rỡ và hạnh phúc. Cảm ơn em đã đến bên anh, làm cho cuộc sống của anh đầy màu sắc và yêu thương. Chúc em một ngày 20/10 ngọt ngào như nụ cười của em, và mọi ngày đều tràn đầy niềm vui 💖🌸</p>
+      <a href="main2.html">Tiếp tục</a>
+    </div>
+  </div>
+</div>
+
+<script>
+const btn = document.getElementById('openBtn');
+const panel = document.getElementById('panel');
+
+function createFallingHeart(){
+  const heart = document.createElement('div');
+  heart.classList.add('falling-heart');
+  const hearts = ['❤️','💕','💖','💗','💝','💓'];
+  heart.textContent = hearts[Math.floor(Math.random()*hearts.length)];
+  heart.style.left = (Math.random()*100) + 'vw';
+  heart.style.color = Math.random() > 0.5 ? 'var(--accent)' : 'var(--accent-blue)';
+  heart.style.fontSize = (20 + Math.random()*20) + 'px';
+  const duration = 4 + Math.random()*2;
+  heart.style.animationDuration = duration + 's';
+  document.body.appendChild(heart);
+  heart.addEventListener('animationend', ()=>heart.remove());
+}
+
+function startHearts(){
+  const interval = setInterval(createFallingHeart,150);
+  setTimeout(()=>clearInterval(interval),10000);
+}
+
+btn.addEventListener('click', ()=>{
+  panel.classList.add('show');  // hiển thị panel
+  startHearts();                 // bắt đầu rơi trái tim
+  btn.style.display = 'none';    // ẩn nút
+});
+
+btn.addEventListener('keyup', (e)=>{
+  if(e.key==='Enter'||e.key===' ') btn.click();
+});
+</script>
+</body>
+</html>
